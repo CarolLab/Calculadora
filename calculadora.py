@@ -53,7 +53,8 @@ janela.title("Calculadora")
 
 #Botões######################################
 
-monitor = Label(janela, text="", anchor= "e", justify= RIGHT,padx = 7, font = "Ivy 16", width = 18, height= 2,
+monitor = Label(janela, text="", anchor= "e", relief = "flat",justify= RIGHT,padx = 7, font = "Ivy 16",
+                width = 18, height= 2,
                 bg="Light Grey", fg="Black")
 monitor.place(x = 0,y = 3)
 
@@ -72,61 +73,76 @@ apagtud.place(x = 0, y = 58)
 #def funcao():
 #    mostrar("/")
 
-divid = Button(janela, text="/", width=7, height = 3, command= lambda: mostrar("/"))
+divid = Button(janela, text="/", width=7, height = 3, bg = "Orange",
+               command= lambda: mostrar("/"))
 divid.place(x = 175, y = 58)
 
-sete = Button(janela, text= "7", width=7,height=3, command= lambda: mostrar("7"))
+sete = Button(janela, text= "7", width=7,height=3, relief= "raised",
+              command= lambda: mostrar("7"))
 sete.place(x = 0, y= 113)
 
-oito = Button(janela, text="8",width=7,height=3, command= lambda: mostrar("8"))
+oito = Button(janela, text="8",width=7,height=3, relief= "raised",
+              command= lambda: mostrar("8"))
 oito.place(x = 58, y = 113)
 
-nove = Button(janela, text = "9",width=7,height=3, command = lambda: mostrar("9"))
+nove = Button(janela, text = "9",width=7,height=3, relief= "raised",
+              command = lambda: mostrar("9"))
 nove.place(x = 116, y = 113)
 
 
-mult = Button(janela, text = "*", width=7, height=3, command = lambda: mostrar("*"))
+mult = Button(janela, text = "*", width=7, height=3, bg = "Orange",
+              command = lambda: mostrar("*"))
 mult.place(x = 175, y = 113)
 
 
 
-quatro = Button(janela, text = "4",width=7,height=3, command = lambda: mostrar("4"))
+quatro = Button(janela, text = "4",width=7,height=3, relief= "raised",
+                command = lambda: mostrar("4"))
 quatro.place(x = 0, y = 168)
 
-cinco = Button(janela, text = "5", width=7,height=3,command= lambda: mostrar("5"))
+cinco = Button(janela, text = "5", width=7,height=3, relief= "raised",
+               command= lambda: mostrar("5"))
 cinco.place(x = 58, y = 168)
 
-seis= Button(janela, text = "6",width=7,height=3, command= lambda: mostrar("6"))
+seis= Button(janela, text = "6",width=7,height=3, relief= "raised",
+             command= lambda: mostrar("6"))
 seis.place(x = 116, y = 168)
 
-subtrair = Button(janela, text = "-", width=7,height=3, command=lambda: mostrar("-"))
+subtrair = Button(janela, text = "-", width=7,height=3, bg = "Orange",
+                  command=lambda: mostrar("-"))
 subtrair.place(x = 175, y = 168)
 
 
 
 
-um = Button(janela, text = "1", width=7,height=3, command= lambda: mostrar("1"))
+um = Button(janela, text = "1", width=7,height=3, relief= "raised",
+            command= lambda: mostrar("1"))
 um.place(x=0, y =223)
 
-dois = Button(janela, text = "2", width=7,height=3, command= lambda: mostrar("2"))
+dois = Button(janela, text = "2", width=7,height=3, relief= "raised",
+              command= lambda: mostrar("2"))
 dois.place(x = 58, y = 223)
 
-tres = Button(janela, text="3", width=7,height=3, command= lambda: mostrar("3"))
+tres = Button(janela, text="3", width=7,height=3, relief= "raised",
+              command= lambda: mostrar("3"))
 tres.place(x = 116, y = 223)
 
-somar = Button(janela, text= "+", width=7,height=3,command= lambda: mostrar("+"))
+somar = Button(janela, text= "+", width=7,height=3,bg = "Orange",
+               command= lambda: mostrar("+"))
 somar.place(x = 175, y = 223)
 
 
 
 
-zero = Button(janela, text = "0", width=15, height = 3, command= lambda: mostrar("0"))
+zero = Button(janela, text = "0", width=15, height = 3, relief= "raised",
+              command= lambda: mostrar("0"))
 zero.place(x = 0, y = 278)
 
 ponto = Button(janela, text = ".", width=7,height=3, command= lambda: mostrar("."))
 ponto.place(x = 116, y = 278)
 
-igual = Button(janela, text= "=", width=7,height=3,bg= "Orange",command=lambda : resultado(monitor))
+igual = Button(janela, text= "=", width=7,height=3,bg= "Orange",
+               command=lambda : resultado(monitor))
 igual.place(x = 175, y = 278)
 
 
