@@ -59,8 +59,13 @@ monitor = Label(janela, text="", anchor= "e", relief = "flat",justify= RIGHT,pad
 monitor.place(x = 0,y = 3)
 
 
-apagtud = Button(janela, text="C", width=22, height = 3, padx=6, command= apagar2) #tamanho original 14
+apagtud = Button(janela, text="C", width=15, height = 3, padx=2,
+                 command= apagar2) #tamanho original 14
 apagtud.place(x = 0, y = 58)
+
+
+apagar = Button(janela, width = 7, height = 3, text = "⌫",anchor="center",state = "disabled")
+apagar.place(x = 116, y = 58)
 
 
 #Por noutra versão no github
@@ -134,11 +139,12 @@ somar.place(x = 175, y = 223)
 
 
 
-zero = Button(janela, text = "0", width=15, height = 3, relief= "raised",
+zero = Button(janela, text = "0", width=15, height = 3,padx=2, relief= "raised",
               command= lambda: mostrar("0"))
 zero.place(x = 0, y = 278)
 
-ponto = Button(janela, text = ".", width=7,height=3, command= lambda: mostrar("."))
+ponto = Button(janela, text = ".", width=7,height=3,
+               command= lambda: mostrar("."))
 ponto.place(x = 116, y = 278)
 
 igual = Button(janela, text= "=", width=7,height=3,bg= "Orange",
