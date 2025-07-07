@@ -3,13 +3,13 @@ import tkinter as tk
 #Janela
 
 
-# def apagar_uma():
-#     monitor["text"] -= monitor["text"][:-1]
+def apagar2():
+    #monitor["text"] -= monitor["text"][-1]
 
-    # texto_atual = monitor.cget("text")  # Obtém o texto atual corretamente
-    # if texto_atual:
-    #     monitor["text"] = texto_atual[:-1] #o que fica no "text" é o quetêm text_atual até ao índice -2,
-    #     # ou seja não inclui o último (-1)
+    texto_atual = monitor.cget("text")  # Obtém o texto atual corretamente
+    if texto_atual: #Se tiver texto
+        monitor["text"] = texto_atual[:-1] #o que fica no "text" é o que têm text_atual até ao índice -2,
+        # ou seja não inclui o último (-1)
 
 def mostrar(va):
     try:
@@ -92,14 +92,16 @@ somar.place(x = 175, y = 223)
 
 
 #Apagar
-apagtud = tk.Button(janela, text="C", width=15, height = 3, padx=2,
+apagtud = tk.Button(janela, text="C", padx=2,
+                    width=15, height = 3,
                  relief= "raised", overrelief="ridge",
                  command= apagar) #tamanho original 14
 apagtud.place(x = 0, y = 58)
 
 
 apagar = tk.Button(janela, width = 7, height = 3, text = "⌫",anchor="center",
-                state = "disabled", disabledforeground="Grey")
+                state = "active", disabledforeground="Grey",
+                command = apagar2)
 apagar.place(x = 116, y = 58)
 
 
@@ -109,7 +111,7 @@ apagar.place(x = 116, y = 58)
 #    mostrar("/")
 
 #Linha 1
-sete = tk.Button(janela, text= "7", width=7,height=3,
+sete = tk.Button(janela, text= "7",width=7,height=3,
               relief= "raised", overrelief="flat",
               command= lambda: mostrar("7"))
 sete.place(x = 0, y= 113)
