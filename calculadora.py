@@ -50,8 +50,8 @@ janela = tk.Tk()
 
 janela.geometry("234x330")
 janela.title("Calculadora")
-#Adicionar icon
-#Mudar a fonte da letras/ números
+
+
 
 #Fontes
 fonte_botoes = ("Ivy 9 bold")
@@ -71,30 +71,30 @@ monitor.place(x = 0,y = 3)
 divid = tk.Button(janela, text="/", width=7, height = 3, bg = "Orange",
                relief="raised", overrelief="ridge",
                command= lambda: mostrar("/"))
-divid.place(x = 175, y = 58)
 
 
 #Multiplicação
 mult = tk.Button(janela, text = "*", width=7, height=3, bg = "Orange",
               relief="raised", overrelief="ridge",
               command = lambda: mostrar("*"))
-mult.place(x = 175, y = 113)
 
 
 #Subtração
 subtrair = tk.Button(janela, text = "-", width=7,height=3, bg = "Orange",
                   relief="raised", overrelief="ridge",
                   command=lambda: mostrar("-"))
-subtrair.place(x = 175, y = 168)
-
 
 #Adição
 somar = tk.Button(janela, text= "+", width=7,height=3,bg = "Orange",
                relief= "raised", overrelief="ridge",
                command= lambda: mostrar("+"))
+
+
+
+divid.place(x = 175, y = 58)
+mult.place(x = 175, y = 113)
+subtrair.place(x = 175, y = 168)
 somar.place(x = 175, y = 223)
-
-
 
 
 
@@ -103,11 +103,12 @@ apagtud = tk.Button(janela, text="C", padx=2,  font = fonte_botoes,
                     width=15, height = 3,
                  relief= "raised", overrelief="ridge",
                  command= apagar) #tamanho original 14
-apagtud.place(x = 0, y = 58)
-
 
 apagar = tk.Button(janela, width = 7, height = 3, text = "⌫",anchor="center", font = "Arial 9",
                 command = apagar2)
+
+
+apagtud.place(x = 0, y = 58)
 apagar.place(x = 116, y = 58)
 
 
@@ -120,71 +121,82 @@ apagar.place(x = 116, y = 58)
 sete = tk.Button(janela, text= "7",width=7,height=3,  font = fonte_botoes,
               relief= "raised", overrelief="flat",
               command= lambda: mostrar("7"))
-sete.place(x = 0, y= 113)
 
 oito = tk.Button(janela, text="8",width=7,height=3,  font = fonte_botoes,
               relief= "raised", overrelief= "flat",
               command= lambda: mostrar("8"))
-oito.place(x = 58, y = 113)
 
 nove = tk.Button(janela, text = "9",width=7,height=3, font = fonte_botoes,
               relief= "raised",overrelief="flat",
               command = lambda: mostrar("9"))
-nove.place(x = 116, y = 113)
 
+sete.place(x = 0, y= 113)
+oito.place(x = 58, y = 113)
+nove.place(x = 116, y = 113)
 
 
 #Linha2
 quatro = tk.Button(janela, text = "4",width=7,height=3, font = fonte_botoes,
                 relief= "raised", overrelief="flat",
                 command = lambda: mostrar("4"))
-quatro.place(x = 0, y = 168)
+
 
 cinco = tk.Button(janela, text = "5", width=7,height=3, font = fonte_botoes,
                relief= "raised", overrelief="flat",
                command= lambda: mostrar("5"))
-cinco.place(x = 58, y = 168)
+
 
 seis= tk.Button(janela, text = "6",width=7,height=3, font = fonte_botoes,
              relief= "raised", overrelief="flat",
              command= lambda: mostrar("6"))
-seis.place(x = 116, y = 168)
 
+
+quatro.place(x = 0, y = 168)
+cinco.place(x = 58, y = 168)
+seis.place(x = 116, y = 168)
 
 
 #Linha3
 um = tk.Button(janela, text = "1", width=7,height=3, font = fonte_botoes,
             relief= "raised", overrelief="flat",
             command= lambda: mostrar("1"))
-um.place(x=0, y =223)
+
 
 dois = tk.Button(janela, text = "2", width=7,height=3, font = fonte_botoes,
               relief= "raised", overrelief="flat",
               command= lambda: mostrar("2"))
-dois.place(x = 58, y = 223)
+
 
 tres = tk.Button(janela, text="3", width=7,height=3, font = fonte_botoes,
               relief= "raised", overrelief="flat",
               command= lambda: mostrar("3"))
-tres.place(x = 116, y = 223)
 
+
+um.place(x=0, y =223)
+dois.place(x = 58, y = 223)
+tres.place(x = 116, y = 223)
 
 
 #Linha4
 zero = tk.Button(janela, text = "0", width=15, height = 3,padx=2, font = fonte_botoes,
               relief= "raised", overrelief="flat",
               command= lambda: mostrar("0"))
-zero.place(x = 0, y = 278)
+
 
 ponto = tk.Button(janela, text = ".", width=7,height=3, font = fonte_botoes,
                relief="raised", overrelief="flat",
                command= lambda: mostrar("."))
-ponto.place(x = 116, y = 278)
+
 
 igual = tk.Button(janela, text= "=", width=7,height=3,bg= "Orange", font = fonte_botoes,
                relief= "raised", overrelief="ridge",
                command=lambda : resultado(monitor))
+
+
+zero.place(x = 0, y = 278)
+ponto.place(x = 116, y = 278)
 igual.place(x = 175, y = 278)
 
-###################
+
+#Loop
 janela.mainloop()
