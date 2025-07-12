@@ -50,7 +50,7 @@ janela = tk.Tk()
 
 janela.geometry("234x330")
 janela.title("Calculadora")
-
+janela.resizable(False,False) #Bloqueio da extenção da janela
 
 
 #Fontes
@@ -98,13 +98,15 @@ somar.place(x = 175, y = 223)
 
 
 
-#Apagar
+#Botões - Apagar
 apagtud = tk.Button(janela, text="C", padx=2,  font = fonte_botoes,
                     width=15, height = 3,
                  relief= "raised", overrelief="ridge",
                  command= apagar) #tamanho original 14
 
-apagar = tk.Button(janela, width = 7, height = 3, text = "⌫",anchor="center", font = "Arial 9",
+apagar = tk.Button(janela, width = 7, height = 3,
+                   text = "⌫",anchor="center", font = "Arial 9",
+                   relief = "raised", overrelief="ridge",
                 command = apagar2)
 
 
