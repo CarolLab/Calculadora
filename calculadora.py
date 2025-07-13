@@ -53,6 +53,12 @@ janela.title("Calculadora")
 janela.resizable(False,False) #Bloqueio da extenção da janela
 
 
+#Frames
+frame_1 = tk.Frame(janela)
+frame_2 = tk.Frame(janela)
+
+
+
 #Fontes
 fonte_botoes = ("Ivy 9 bold")
 
