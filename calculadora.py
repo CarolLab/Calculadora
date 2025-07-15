@@ -50,7 +50,10 @@ janela = tk.Tk()
 janela.geometry("227x330")
 janela.title("Calculadora")
 
-#Configuração de colunas e linhas da janela
+#Configuração da jenale e colunas e linhas da janela
+#Janela
+janela.minsize(170, 250)
+#Colunas e linhas
 janela.rowconfigure(0, weight = 1)
 janela.rowconfigure(1, weight = 9)
 
