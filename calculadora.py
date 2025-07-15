@@ -1,8 +1,7 @@
 import tkinter as tk
 
-#Janela
 
-
+#Funções
 def mostrar(va):
     try:
         monitor["text"] += str(va) #Soma ao monitor o simbolo pretendido
@@ -44,80 +43,95 @@ def resultado(tela): #Resultado
 
 ################################################################
 
-#Janela
+#Janela - - - - -  - - - -  -
 
 janela = tk.Tk()
 
-janela.geometry("234x330")
+janela.geometry("227x330")
 janela.title("Calculadora")
-janela.resizable(False,False) #Bloqueio da extenção da janela
 
+#Configuração de colunas e linhas da janela
+janela.rowconfigure(0, weight = 1)
+janela.rowconfigure(1, weight = 9)
 
-#Frames
-frame_1 = tk.Frame(janela)
-frame_2 = tk.Frame(janela)
+janela.columnconfigure(0, weight = 1)
 
-
-
-#Fontes
+#Fontes - - - - - - -  - -  -
 fonte_botoes = ("Ivy 9 bold")
 
 
+#Frames - - - - - -  - - -
+frame_1 = tk.Frame(janela)
+frame_2 = tk.Frame(janela)
 
-#Monitor
-monitor = tk.Label(janela, text="", anchor= "e", relief = "flat",justify= "right",
+#Configuração e colunas e linhas dos frames
+#Frame 1
+frame_1.rowconfigure(0, weight = 1)
+frame_1.columnconfigure(0, weight = 1)
+
+#Frame 2
+frame_2.rowconfigure([0,1,2,3,4], weight = 1)
+frame_2.columnconfigure([0,1,2,3], weight = 1)
+
+
+frame_1.grid(row = 0, column =0, sticky = "nswe")
+frame_2.grid(row = 1, column = 0, sticky = "nswe")
+
+
+#Monitor - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+monitor = tk.Label(frame_1, text="", anchor= "e", relief = "flat",justify= "right",
                 width = 18, height= 2, padx = 7,
                 bg="#423f3f", fg="White",font = "Ivy 16")
-monitor.place(x = 0,y = 3)
+monitor.grid(row = 0, column = 0, sticky = "nswe")
+#monitor.place(x = 0,y = 3)
 
 
 
-#Operadores
+#Operadores - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 #Divisão
-divid = tk.Button(janela, text="/", width=7, height = 3, bg = "Orange",
+divid = tk.Button(frame_2, text="/", width=7, height = 3, bg = "Orange",
                relief="raised", overrelief="ridge",
                command= lambda: mostrar("/"))
 
 
 #Multiplicação
-mult = tk.Button(janela, text = "*", width=7, height=3, bg = "Orange",
+mult = tk.Button(frame_2, text = "*", width=7, height=3, bg = "Orange",
               relief="raised", overrelief="ridge",
               command = lambda: mostrar("*"))
 
 
 #Subtração
-subtrair = tk.Button(janela, text = "-", width=7,height=3, bg = "Orange",
+subtrair = tk.Button(frame_2, text = "-", width=7,height=3, bg = "Orange",
                   relief="raised", overrelief="ridge",
                   command=lambda: mostrar("-"))
 
 #Adição
-somar = tk.Button(janela, text= "+", width=7,height=3,bg = "Orange",
+somar = tk.Button(frame_2, text= "+", width=7,height=3,bg = "Orange",
                relief= "raised", overrelief="ridge",
                command= lambda: mostrar("+"))
 
 
 
-divid.place(x = 175, y = 58)
-mult.place(x = 175, y = 113)
-subtrair.place(x = 175, y = 168)
-somar.place(x = 175, y = 223)
+divid.grid(row = 0, column = 3, sticky = "nswe")
+mult.grid(row = 1,column = 3, sticky = "nswe")
+subtrair.grid(row = 2, column = 3, sticky = "nswe")
+somar.grid(row = 3, column = 3, sticky = "nswe")
 
 
-
-#Botões - Apagar
-apagtud = tk.Button(janela, text="C", padx=2,  font = fonte_botoes,
-                    width=15, height = 3,
+#Botões - Apagar - - - - - - - - - - - - - - - - - - - - -
+apagtud = tk.Button(frame_2, text="C",font = fonte_botoes,
+                    width=7,height = 3,
                  relief= "raised", overrelief="ridge",
                  command= apagar) #tamanho original 14
 
-apagar = tk.Button(janela, width = 7, height = 3,
+apagar = tk.Button(frame_2, width = 7, height = 3,
                    text = "⌫",anchor="center", font = "Arial 9",
                    relief = "raised", overrelief="ridge",
                 command = apagar2)
 
 
-apagtud.place(x = 0, y = 58)
-apagar.place(x = 116, y = 58)
+apagtud.grid(row = 0, column = 0, columnspan = 2, sticky = "snswe")
+apagar.grid(row = 0, column = 2, sticky = "nswe")
 
 
 
@@ -125,85 +139,85 @@ apagar.place(x = 116, y = 58)
 #def funcao():
 #    mostrar("/")
 
-#Linha 1
-sete = tk.Button(janela, text= "7",width=7,height=3,  font = fonte_botoes,
+#Linha 1 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+sete = tk.Button(frame_2, text= "7",width=7,height=3,  font = fonte_botoes,
               relief= "raised", overrelief="flat",
               command= lambda: mostrar("7"))
 
-oito = tk.Button(janela, text="8",width=7,height=3,  font = fonte_botoes,
+oito = tk.Button(frame_2, text="8",width=7,height=3,  font = fonte_botoes,
               relief= "raised", overrelief= "flat",
               command= lambda: mostrar("8"))
 
-nove = tk.Button(janela, text = "9",width=7,height=3, font = fonte_botoes,
+nove = tk.Button(frame_2, text = "9",width=7,height=3, font = fonte_botoes,
               relief= "raised",overrelief="flat",
               command = lambda: mostrar("9"))
 
-sete.place(x = 0, y= 113)
-oito.place(x = 58, y = 113)
-nove.place(x = 116, y = 113)
+sete.grid(row = 1, column = 0, sticky = "nswe")
+oito.grid(row = 1, column = 1, sticky = "nswe")
+nove.grid(row = 1, column = 2, sticky = "nswe")
 
 
-#Linha2
-quatro = tk.Button(janela, text = "4",width=7,height=3, font = fonte_botoes,
+#Linha2 -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -
+quatro = tk.Button(frame_2, text = "4",width=7,height=3, font = fonte_botoes,
                 relief= "raised", overrelief="flat",
                 command = lambda: mostrar("4"))
 
 
-cinco = tk.Button(janela, text = "5", width=7,height=3, font = fonte_botoes,
+cinco = tk.Button(frame_2, text = "5", width=7,height=3, font = fonte_botoes,
                relief= "raised", overrelief="flat",
                command= lambda: mostrar("5"))
 
 
-seis= tk.Button(janela, text = "6",width=7,height=3, font = fonte_botoes,
+seis= tk.Button(frame_2, text = "6",width=7,height=3, font = fonte_botoes,
              relief= "raised", overrelief="flat",
              command= lambda: mostrar("6"))
 
 
-quatro.place(x = 0, y = 168)
-cinco.place(x = 58, y = 168)
-seis.place(x = 116, y = 168)
+quatro.grid(row = 2, column = 0, sticky = "nswe")
+cinco.grid(row = 2, column = 1, sticky = "nswe")
+seis.grid(row = 2,column = 2, sticky = "nswe")
 
 
-#Linha3
-um = tk.Button(janela, text = "1", width=7,height=3, font = fonte_botoes,
+#Linha3  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -
+um = tk.Button(frame_2, text = "1", width=7,height=3, font = fonte_botoes,
             relief= "raised", overrelief="flat",
             command= lambda: mostrar("1"))
 
 
-dois = tk.Button(janela, text = "2", width=7,height=3, font = fonte_botoes,
+dois = tk.Button(frame_2, text = "2", width=7,height=3, font = fonte_botoes,
               relief= "raised", overrelief="flat",
               command= lambda: mostrar("2"))
 
 
-tres = tk.Button(janela, text="3", width=7,height=3, font = fonte_botoes,
+tres = tk.Button(frame_2, text="3", width=7,height=3, font = fonte_botoes,
               relief= "raised", overrelief="flat",
               command= lambda: mostrar("3"))
 
 
-um.place(x=0, y =223)
-dois.place(x = 58, y = 223)
-tres.place(x = 116, y = 223)
+um.grid(row = 3, column = 0, sticky = "nswe")
+dois.grid(row = 3, column = 1, sticky = "nswe")
+tres.grid(row = 3, column = 2, sticky = "nswe")
 
 
-#Linha4
-zero = tk.Button(janela, text = "0", width=15, height = 3,padx=2, font = fonte_botoes,
+#Linha4  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -
+zero = tk.Button(frame_2, text = "0", width=7, height = 3, font = fonte_botoes,
               relief= "raised", overrelief="flat",
               command= lambda: mostrar("0"))
 
 
-ponto = tk.Button(janela, text = ".", width=7,height=3, font = fonte_botoes,
+ponto = tk.Button(frame_2, text = ".", width=7,height=3, font = fonte_botoes,
                relief="raised", overrelief="flat",
                command= lambda: mostrar("."))
 
 
-igual = tk.Button(janela, text= "=", width=7,height=3,bg= "Orange", font = fonte_botoes,
+igual = tk.Button(frame_2, text= "=", width=7,height=3,bg= "Orange", font = fonte_botoes,
                relief= "raised", overrelief="ridge",
                command=lambda : resultado(monitor))
 
 
-zero.place(x = 0, y = 278)
-ponto.place(x = 116, y = 278)
-igual.place(x = 175, y = 278)
+zero.grid(row = 4, column = 0, columnspan = 2, sticky = "nswe")
+ponto.grid(row = 4, column = 2, sticky = "nswe")
+igual.grid(row = 4, column = 3, sticky = "nswe")
 
 
 #Loop
