@@ -62,6 +62,7 @@ janela.columnconfigure(0, weight = 1)
 
 #Fontes - - - - - - -  - -  -
 fonte_botoes = ("Ivy 9 bold")
+fonte_operadores = ("Antenna 9 bold")
 
 
 #Frames - - - - - -  - - -
@@ -94,24 +95,24 @@ monitor.grid(row = 0, column = 0, sticky = "nswe")
 #Operadores - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 #Divisão
 divid = tk.Button(frame_2, text="/", width=7, height = 3, bg = "Orange",
-               relief="raised", overrelief="ridge",
+               relief="raised", overrelief="ridge", font = fonte_operadores,
                command= lambda: mostrar("/"))
 
 
 #Multiplicação
 mult = tk.Button(frame_2, text = "*", width=7, height=3, bg = "Orange",
-              relief="raised", overrelief="ridge",
+              relief="raised", overrelief="ridge",font = fonte_operadores,
               command = lambda: mostrar("*"))
 
 
 #Subtração
 subtrair = tk.Button(frame_2, text = "-", width=7,height=3, bg = "Orange",
-                  relief="raised", overrelief="ridge",
+                  relief="raised", overrelief="ridge", font = fonte_operadores,
                   command=lambda: mostrar("-"))
 
 #Adição
 somar = tk.Button(frame_2, text= "+", width=7,height=3,bg = "Orange",
-               relief= "raised", overrelief="ridge",
+               relief= "raised", overrelief="ridge", font = fonte_operadores,
                command= lambda: mostrar("+"))
 
 
