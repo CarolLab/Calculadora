@@ -53,6 +53,7 @@ janela.title("Calculadora")
 #Configuração da jenale e colunas e linhas da janela
 #Janela
 janela.minsize(170, 250)
+janela.maxsize(350,500)
 #Colunas e linhas
 janela.rowconfigure(0, weight = 1)
 janela.rowconfigure(1, weight = 9)
