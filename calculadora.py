@@ -2,6 +2,11 @@ import tkinter as tk
 
 
 #Funções
+def mostrar_calculo(evento):#Lida com o evento da tecla ENTER
+    resultado() #Executa a função que faz o cálculo
+
+
+
 def mostrar(va):
     try:
         monitor["text"] += str(va) #Soma ao monitor o simbolo pretendido
@@ -27,18 +32,18 @@ def apagar():
 
 
 
-def resultado(tela): #Resultado
+def resultado(): #Resultado
     try:
-        conta = tela["text"]
+        conta = monitor["text"]
 
         result = eval(conta)
 
-        tela["text"] = result
+        monitor["text"] = result
 
 
 
     except: #De der erro a tela fica vazia
-        tela["text"] = ""
+        monitor["text"] = ""
 
 
 ################################################################
@@ -217,13 +222,16 @@ ponto = tk.Button(frame_2, text = ".", width=7,height=3, font = fonte_botoes,
 
 igual = tk.Button(frame_2, text= "=", width=7,height=3,bg= "Orange", font = fonte_botoes,
                relief= "raised", overrelief="ridge",
-               command=lambda : resultado(monitor))
+               command=lambda : resultado())
 
 
 zero.grid(row = 4, column = 0, columnspan = 2, sticky = "nswe")
 ponto.grid(row = 4, column = 2, sticky = "nswe")
 igual.grid(row = 4, column = 3, sticky = "nswe")
 
+
+#Eventos de teclado
+janela.bind("<Return>", mostrar_calculo) #Ao carregar no botão ENTER executa o cáluculo
 
 #Loop
 janela.mainloop()
