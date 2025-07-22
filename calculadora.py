@@ -2,15 +2,18 @@ import tkinter as tk
 
 
 #Funções
-def mostrar_calculo(evento):#Lida com o evento da tecla ENTER
-    resultado() #Executa a função que faz o cálculo
+def evento_teclado(evento):#Lida com o evento da tecla ENTER
+    if evento.char in "+-/*":
+        mostrar(evento.char)
+    elif evento.keysym == "Return":
+        resultado() #Executa a função que faz o cálculo
 
 
 
-def mostrar(va):
+def mostrar(va):#Mostar a caracter no monitor
     try:
-        monitor["text"] += str(va) #Soma ao monitor o simbolo pretendido
-    except: #dá erro de não poder juntar int + str então apaga e mostra o número escolhido
+        monitor["text"] += str(va) #Soma ao monitor o caracter pretendido
+    except: #Se o user tentar inserir um caracter depois de ter feito o cálculo mostra só o caracterdá
         monitor["text"] = va
 
 
@@ -34,11 +37,11 @@ def apagar():
 
 def resultado(): #Resultado
     try:
-        conta = monitor["text"]
+        calculo = monitor["text"]#Recebe o cálculo
 
-        result = eval(conta)
+        result = eval(calculo)#Calcula o resultado
 
-        monitor["text"] = result
+        monitor["text"] = result#Mostra o resultado
 
 
 
@@ -231,7 +234,7 @@ igual.grid(row = 4, column = 3, sticky = "nswe")
 
 
 #Eventos de teclado
-janela.bind("<Return>", mostrar_calculo) #Ao carregar no botão ENTER executa o cáluculo
+janela.bind("<Key>", evento_teclado) #Ao carregar no botão ENTER executa o cáluculo
 
 #Loop
 janela.mainloop()
