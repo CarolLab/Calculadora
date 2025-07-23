@@ -3,7 +3,7 @@ import tkinter as tk
 
 #Funções
 def evento_teclado(evento):#Lida com o evento da tecla ENTER
-    if evento.char in "+-/*":
+    if evento.char in "+-/*1234567890.":
         mostrar(evento.char)
     elif evento.keysym == "Return":
         resultado() #Executa a função que faz o cálculo
