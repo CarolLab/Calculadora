@@ -32,12 +32,6 @@ def apagar2():
 
 
 
-def apagar():
-    monitor["text"] = "" #Apaga/transforma o texto da string(label) em nada
-
-
-
-
 def resultado(): #Resultado
     try:
         calculo = monitor["text"]#Recebe o cálculo
@@ -138,7 +132,7 @@ somar.grid(row = 3, column = 3, sticky = "nswe")
 apagtud = tk.Button(frame_2, text="C",font = fonte_botoes,
                     width=7,height = 3,
                  relief= "raised", overrelief="ridge",
-                 command= apagar) #tamanho original 14
+                 command= lambda: monitor.config(text = ""))#Apaga/transforma o texto da string(label) em nada
 
 apagar = tk.Button(frame_2, width = 7, height = 3,
                    text = "⌫",anchor="center", font = "Arial 9",
