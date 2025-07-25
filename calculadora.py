@@ -5,8 +5,11 @@ import tkinter as tk
 def evento_teclado(evento):#Lida com o evento da tecla ENTER
     if evento.char in "+-/*1234567890.":
         mostrar(evento.char)
+
     elif evento.keysym == "Return":
         resultado() #Executa a função que faz o cálculo
+    elif evento.keysym == "BackSpace":
+        apagar2()#Executa a função de apagar um por um
 
 
 
