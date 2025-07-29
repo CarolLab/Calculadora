@@ -2,9 +2,9 @@ import tkinter as tk
 
 
 #Funções
-def evento_teclado(evento):#Lida com o evento da tecla ENTER
+def evento_teclado(evento):#Lida com os eventos de teclado
     if evento.char in "+-/*1234567890.":
-        mostrar(evento.char)
+        mostrar(evento.char)#Executa a função de mostrar o caracter no monitor
     elif evento.char == "c" or evento.char == "C":
         monitor.config(text="")
     elif evento.keysym == "Return":
@@ -14,15 +14,15 @@ def evento_teclado(evento):#Lida com o evento da tecla ENTER
 
 
 
-def mostrar(va):#Mostar a caracter no monitor
+def mostrar(caracter):#Mostar a caracter no monitor
     try:
-        monitor["text"] += str(va) #Soma ao monitor o caracter pretendido
+        monitor["text"] += str(caracter) #Soma ao monitor o caracter pretendido
     except: #Se o user tentar inserir um caracter depois de ter feito o cálculo mostra só o caracterdá
-        monitor["text"] = va
+        monitor["text"] = caracter
 
 
 
-def apagar2():
+def apagar2():#Apagar um por um
     try:
         texto_atual = monitor.cget("text")  # Obtém o texto atual corretamente
         if texto_atual: #Se tiver texto
@@ -33,18 +33,16 @@ def apagar2():
 
 
 
-def resultado(): #Resultado
+def resultado(): #Mostra o resultado
+    expressao = monitor["text"] #Recebe o cáculo
+    monitor["text"] = calcular(expressao) #Chama outra função para calcular
+
+
+def calcular(expressao):#Calcula a expressão dada
     try:
-        calculo = monitor["text"]#Recebe o cálculo
-
-        result = eval(calculo)#Calcula o resultado
-
-        monitor["text"] = result#Mostra o resultado
-
-
-
-    except: #De der erro a tela fica vazia
-        monitor["text"] = ""
+        return str(eval(expressao)) #Calcula e retorna o cálculo
+    except:
+        return ""
 
 
 ################################################################
@@ -94,7 +92,6 @@ monitor = tk.Label(frame_1, text="", anchor= "e", relief = "flat",justify= "righ
                 width = 18, height= 2, padx = 7,
                 bg="#423f3f", fg="White",font = "Ivy 16")
 monitor.grid(row = 0, column = 0, sticky = "nswe")
-#monitor.place(x = 0,y = 3)
 
 
 
@@ -130,10 +127,10 @@ somar.grid(row = 3, column = 3, sticky = "nswe")
 
 
 #Botões - Apagar - - - - - - - - - - - - - - - - - - - - -
-apagtud = tk.Button(frame_2, text="C",font = fonte_botoes,
+apagar_tudo= tk.Button(frame_2, text="C",font = fonte_botoes,
                     width=7,height = 3,
                  relief= "raised", overrelief="ridge",
-                 command= lambda: monitor.config(text = ""))#Apaga/transforma o texto da string(label) em nada
+                 command= lambda: monitor.config(text = ""))
 
 apagar = tk.Button(frame_2, width = 7, height = 3,
                    text = "⌫",anchor="center", font = "Arial 9",
@@ -141,7 +138,7 @@ apagar = tk.Button(frame_2, width = 7, height = 3,
                 command = apagar2)
 
 
-apagtud.grid(row = 0, column = 0, columnspan = 2, sticky = "snswe")
+apagar_tudo.grid(row = 0, column = 0, columnspan = 2, sticky = "snswe")
 apagar.grid(row = 0, column = 2, sticky = "nswe")
 
 
