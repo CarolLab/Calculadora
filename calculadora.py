@@ -38,9 +38,9 @@ def resultado(): #Mostra o resultado
     monitor["text"] = calcular(expressao) #Chama outra função para calcular
 
 
-def calcular(expressao):#Calcula a expressão dada
+def calcular(expressao: str)-> float or str:#Calcula a expressão dada
     try:
-        return str(eval(expressao)) #Calcula e retorna o cálculo
+        return float(eval(expressao)) #Calcula e retorna o cálculo
     except:
         return ""
 
