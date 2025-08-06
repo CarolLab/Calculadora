@@ -15,37 +15,57 @@ def evento_teclado(evento):#Lida com os eventos de teclado
 
 
 def mostrar(caracter):#Mostar a caracter no monitor
-    try:
-        monitor["text"] += str(caracter) #Soma ao monitor o caracter pretendido
-    except: #Se o user tentar inserir um caracter depois de ter feito o cálculo mostra só o caracterdá
-        monitor["text"] = caracter
+    global mostrar_resultado
+
+    if mostrar_resultado:#Se o resultado estiver a ser exibido
+        #Limpa a tela e adiciona o novo caracter
+        #O monitor fica só com o caracter
+        monitor_stringvar.set(caracter)
+        mostrar_resultado = False# O resultado já não está a ser exibido
+
+    else:#Se o resultado não estiver a ser exibido
+        #Age normalmente
+        #Adiciona á expressão o novo caracter
+        novo_texto = monitor_stringvar.get() + str(caracter)#Adiciona o caracter pretendido
+
+        monitor_stringvar.set(novo_texto)#Insere o texto do monitar mais o caracter
 
 
 
 def apagar2():#Apagar um por um
     try:
-        texto_atual = monitor.cget("text")  # Obtém o texto atual corretamente
+        texto_atual = monitor_stringvar.get() # Obtém o texto atual corretamente
         if texto_atual: #Se tiver texto
-            monitor["text"] = texto_atual[:-1] #o que fica no "text" é o que têm text_atual até ao índice -2,
-            # ou seja não inclui o último (-1)
+            monitor_stringvar.set(texto_atual[:-1])#O que fica na StringVar é o que têm text_atual até ao índice -2,
+            # ou seja não inclui o último caracter (-1)
     except:
-        monitor["text"] = ""
+        monitor_stringvar.set("")
 
 
+def resultado(): #Mostra o resultado no monitor
+    global mostrar_resultado
 
-def resultado(): #Mostra o resultado
-    expressao = monitor["text"] #Recebe o cáculo
-    monitor["text"] = calcular(expressao) #Chama outra função para calcular
+    expressao = monitor_stringvar.get()#Recebe o cáculo
+    resultado = calcular(expressao)#Chama a função de calcular
+
+    monitor_stringvar.set(resultado) #Exibe o resultado
+
+    mostrar_resultado = True#O resultado está a ser exibido
 
 
 def calcular(expressao: str)-> float or str:#Calcula a expressão dada
     try:
-        return float(eval(expressao)) #Calcula e retorna o cálculo
+        print(float(eval(expressao)))
+        return float(eval(expressao)) #Calcula e retorna o resultado em float
     except:
         return ""
 
 
 ################################################################
+#Varíavel
+mostrar_resultado = False #Varíavel que informa se o resultado está a ser exibido
+
+
 
 #Janela - - - - -  - - - -  -
 
@@ -88,7 +108,9 @@ frame_2.grid(row = 1, column = 0, sticky = "nswe")
 
 
 #Monitor - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-monitor = tk.Label(frame_1, text="", anchor= "e", relief = "flat",justify= "right",
+monitor_stringvar = tk.StringVar()
+
+monitor = tk.Label(frame_1, textvariable=monitor_stringvar, anchor= "e", relief = "flat",justify= "right",
                 width = 18, height= 2, padx = 7,
                 bg="#423f3f", fg="White",font = "Ivy 16")
 monitor.grid(row = 0, column = 0, sticky = "nswe")
@@ -229,7 +251,7 @@ igual.grid(row = 4, column = 3, sticky = "nswe")
 
 
 #Eventos de teclado
-janela.bind("<Key>", evento_teclado) #Ao carregar no botão ENTER executa o cáluculo
+janela.bind("<Key>", evento_teclado)#Ao carregar num tecla
 
 #Loop
 janela.mainloop()
