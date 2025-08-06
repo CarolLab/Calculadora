@@ -6,7 +6,7 @@ def evento_teclado(evento):#Lida com os eventos de teclado
     if evento.char in "+-/*1234567890.":
         mostrar(evento.char)#Executa a função de mostrar o caracter no monitor
     elif evento.char == "c" or evento.char == "C":
-        monitor.config(text="")
+        monitor_stringvar.set("") #Limpa o monitor
     elif evento.keysym == "Return":
         resultado() #Executa a função que faz o cálculo
     elif evento.keysym == "BackSpace":
@@ -55,7 +55,6 @@ def resultado(): #Mostra o resultado no monitor
 
 def calcular(expressao: str)-> float or str:#Calcula a expressão dada
     try:
-        print(float(eval(expressao)))
         return float(eval(expressao)) #Calcula e retorna o resultado em float
     except:
         return ""
@@ -152,7 +151,7 @@ somar.grid(row = 3, column = 3, sticky = "nswe")
 apagar_tudo= tk.Button(frame_2, text="C",font = fonte_botoes,
                     width=7,height = 3,
                  relief= "raised", overrelief="ridge",
-                 command= lambda: monitor.config(text = ""))
+                 command= lambda: monitor_stringvar.set(""))
 
 apagar = tk.Button(frame_2, width = 7, height = 3,
                    text = "⌫",anchor="center", font = "Arial 9",
