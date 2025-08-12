@@ -243,14 +243,17 @@ ponto = tk.Button(frame_2, text = ".", width=7,height=3, font = fonte_botoes,
                relief="raised", overrelief="flat",
                command= lambda: mostrar("."))
 
+b_ans = tk.Button(frame_2, text = "ANS", width = 7, height = 3, state = "disabled")
+
 
 igual = tk.Button(frame_2, text= "=", width=7,height=3,bg= "Orange", font = fonte_botoes,
                relief= "raised", overrelief="ridge",
                command=lambda : resultado())
 
 
-zero.grid(row = 4, column = 0, columnspan = 2, sticky = "nswe")
-ponto.grid(row = 4, column = 2, sticky = "nswe")
+zero.grid(row = 4, column = 1, sticky = "nswe")
+ponto.grid(row = 4, column = 0, sticky = "nswe")
+b_ans.grid(row = 4, column = 2, sticky = "nswe")
 igual.grid(row = 4, column = 3, sticky = "nswe")
 
 
