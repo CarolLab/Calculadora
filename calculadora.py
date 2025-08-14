@@ -49,6 +49,7 @@ def apagar2():#Apagar um por um
 
 def resultado(): #Mostra o resultado no monitor
     global mostrar_resultado
+    global ultimo_resultado
 
     expressao = monitor_stringvar.get()#Recebe o cáculo
     resultado = calcular(expressao)#Chama a função de calcular
@@ -56,7 +57,7 @@ def resultado(): #Mostra o resultado no monitor
     monitor_stringvar.set(resultado) #Exibe o resultado
 
     mostrar_resultado = True#O resultado está a ser exibido
-
+    ultimo_resultado = resultado #Guarda o resultado
 
 def calcular(expressao: str)-> float or str:#Calcula a expressão dada
     try:
@@ -66,9 +67,10 @@ def calcular(expressao: str)-> float or str:#Calcula a expressão dada
 
 
 ################################################################
-#Varíavel
+#Varíavéis
 mostrar_resultado = False #Varíavel que informa se o resultado está a ser exibido
-
+ultimo_resultado = 0 #Variável que é usada pelo botão ANS
+#Incialmente é 0
 
 
 #Janela - - - - -  - - - -  -
@@ -169,10 +171,6 @@ apagar.grid(row = 0, column = 2, sticky = "nswe")
 
 
 
-#A função lambda cria uma função anónima sem nome, que executa a função mostrar() quando o botão seja clicado
-#def funcao():
-#    mostrar("/")
-
 #Linha 1 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 sete = tk.Button(frame_2, text= "7",width=7,height=3,  font = fonte_botoes,
               relief= "raised", overrelief="flat",
@@ -243,7 +241,9 @@ ponto = tk.Button(frame_2, text = ".", width=7,height=3, font = fonte_botoes,
                relief="raised", overrelief="flat",
                command= lambda: mostrar("."))
 
-b_ans = tk.Button(frame_2, text = "ANS", width = 7, height = 3, state = "disabled")
+botao_ans = tk.Button(frame_2, text = "ANS", width = 7, height = 3,
+                      relief = "raised", overrelief = "flat",
+                      command = lambda: mostrar(ultimo_resultado))
 
 
 igual = tk.Button(frame_2, text= "=", width=7,height=3,bg= "Orange", font = fonte_botoes,
@@ -253,7 +253,7 @@ igual = tk.Button(frame_2, text= "=", width=7,height=3,bg= "Orange", font = font
 
 zero.grid(row = 4, column = 1, sticky = "nswe")
 ponto.grid(row = 4, column = 0, sticky = "nswe")
-b_ans.grid(row = 4, column = 2, sticky = "nswe")
+botao_ans.grid(row = 4, column = 2, sticky = "nswe")
 igual.grid(row = 4, column = 3, sticky = "nswe")
 
 
