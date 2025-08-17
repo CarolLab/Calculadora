@@ -251,8 +251,8 @@ igual = tk.Button(frame_2, text= "=", width=7,height=3,bg= "Orange", font = font
                command=lambda : resultado())
 
 
-zero.grid(row = 4, column = 1, sticky = "nswe")
-ponto.grid(row = 4, column = 0, sticky = "nswe")
+zero.grid(row = 4, column = 0, sticky = "nswe")
+ponto.grid(row = 4, column = 1, sticky = "nswe")
 botao_ans.grid(row = 4, column = 2, sticky = "nswe")
 igual.grid(row = 4, column = 3, sticky = "nswe")
 
