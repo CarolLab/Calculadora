@@ -20,8 +20,9 @@ def mostrar(caracter):#Mostar a caracter no monitor
     if mostrar_resultado:#Se o resultado estiver a ser exibido
         #Limpa a tela e adiciona o novo caracter
         #O monitor fica só com o caracter
-        monitor_stringvar.set(caracter)
-        mostrar_resultado = False# O resultado já não está a ser exibido
+        if caracter in "0123456789":
+            monitor_stringvar.set(caracter)
+            mostrar_resultado = False# O resultado já não está a ser exibido
 
     else:#Se o resultado não estiver a ser exibido
         #Age normalmente
@@ -59,9 +60,9 @@ def resultado(): #Mostra o resultado no monitor
     mostrar_resultado = True#O resultado está a ser exibido
     ultimo_resultado = resultado #Guarda o resultado
 
-def calcular(expressao: str)-> float or str:#Calcula a expressão dada
+def calcular(expressao: str)->str:#Calcula a expressão dada
     try:
-        return float(eval(expressao)) #Calcula e retorna o resultado em float
+        return str(eval(expressao)) #Calcula e retorna o resultado em float
     except:
         return ""
 
