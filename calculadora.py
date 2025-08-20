@@ -63,7 +63,7 @@ def resultado(): #Mostra o resultado no monitor
 def calcular(expressao: str)->str:#Calcula a expressão dada
     try:
         return str(eval(expressao)) #Calcula e retorna o resultado em float
-    except:
+    except SyntaxError:
         return ""
 
 
@@ -92,8 +92,8 @@ janela.rowconfigure(1, weight = 9)
 janela.columnconfigure(0, weight = 1)
 
 #Fontes - - - - - - -  - -  -
-fonte_botoes = ("Ivy 9 bold")
-fonte_operadores = ("Antenna 9 bold")
+fonte_botoes = "Ivy 9 bold"
+fonte_operadores = "Antenna 9 bold"
 
 
 #Frames - - - - - -  - - -
