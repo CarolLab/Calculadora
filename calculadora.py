@@ -20,9 +20,16 @@ def mostrar(caracter):#Mostar a caracter no monitor
     if mostrar_resultado:#Se o resultado estiver a ser exibido
         #Limpa a tela e adiciona o novo caracter
         #O monitor fica só com o caracter
+
         if caracter in "0123456789":
             monitor_stringvar.set(caracter)
             mostrar_resultado = False# O resultado já não está a ser exibido
+        else:#+-*/."
+            novo_texto = monitor_stringvar.get() + caracter
+
+            monitor_stringvar.set(novo_texto)
+
+            mostrar_resultado = False  # O resultado já não está a ser exibido
 
     else:#Se o resultado não estiver a ser exibido
         #Age normalmente
