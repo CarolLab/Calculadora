@@ -24,7 +24,7 @@ def mostrar(caracter):#Mostar a caracter no monitor
         if caracter in "0123456789":
             monitor_stringvar.set(caracter)
             mostrar_resultado = False# O resultado já não está a ser exibido
-        else:#+-*/."
+        else:#"+-*/."
             novo_texto = monitor_stringvar.get() + caracter
 
             monitor_stringvar.set(novo_texto)
@@ -41,18 +41,18 @@ def mostrar(caracter):#Mostar a caracter no monitor
 
 
 def apagar2():#Apagar um por um
-    try:
-        if mostrar_resultado:#Se o resultado estiver a ser exibido
-            monitor_stringvar.set("")#Apaga o texto
 
-        else:#Se não estiver a ser exibido
-            texto_atual = monitor_stringvar.get() # Obtém o texto atual corretamente
+    if mostrar_resultado:#Se o resultado estiver a ser exibido
+        monitor_stringvar.set("")#Apaga o texto
 
-            if texto_atual: #Verificar se têm texto para poder apagar
-                monitor_stringvar.set(texto_atual[:-1])#O que fica na StringVar é o que têm text_atual até ao índice -2,
-                # ou seja não inclui o último caracter (-1)
-    except:
-        monitor_stringvar.set("")
+    else:#Se não estiver a ser exibido
+        texto_atual = monitor_stringvar.get() # Obtém o texto atual corretamente
+        print(1)
+
+        if texto_atual: #Verificar se têm texto para poder apagar
+            monitor_stringvar.set(texto_atual[:-1])#O que fica na StringVar é o que têm text_atual até ao índice -2,
+            # ou seja não inclui o último caracter (-1)
+
 
 
 def resultado(): #Mostra o resultado no monitor
