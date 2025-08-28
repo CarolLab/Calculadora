@@ -69,7 +69,7 @@ def resultado(): #Mostra o resultado no monitor
 def calcular(expressao: str)->str:#Calcula a expressão dada
     try:
         return str(eval(expressao)) #Calcula e retorna o resultado em float
-    except SyntaxError:
+    except (SyntaxError, TypeError):
         return ""
 
 
@@ -187,7 +187,7 @@ resto_divisao.grid(row = 0, column = 3, sticky = "nswe")
 #Linha 1 -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -
 abre_paren = tk.Button(frame_2,text = "(", width = 7, height = 3, font = fonte_botoes,
                        relief = "raised", overrelief= "flat",
-                  command = lambda: mostrar("("))
+                  command = lambda: mostrar("*("))
 fecha_paren = tk.Button(frame_2, text = ")", width = 7, height = 2,
                         relief = "raised", overrelief = "flat",
                   command = lambda: mostrar(")"))
