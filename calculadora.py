@@ -47,7 +47,6 @@ def apagar2():#Apagar um por um
 
     else:#Se não estiver a ser exibido
         texto_atual = monitor_stringvar.get() # Obtém o texto atual corretamente
-        print(1)
 
         if texto_atual: #Verificar se têm texto para poder apagar
             monitor_stringvar.set(texto_atual[:-1])#O que fica na StringVar é o que têm text_atual até ao índice -2,
@@ -60,12 +59,12 @@ def resultado(): #Mostra o resultado no monitor
     global ultimo_resultado
 
     expressao = monitor_stringvar.get()#Recebe o cáculo
-    resultado = calcular(expressao)#Chama a função de calcular
+    resultado_ = calcular(expressao)#Chama a função de calcular
 
-    monitor_stringvar.set(resultado) #Exibe o resultado
+    monitor_stringvar.set(resultado_) #Exibe o resultado
 
     mostrar_resultado = True#O resultado está a ser exibido
-    ultimo_resultado = resultado #Guarda o resultado
+    ultimo_resultado = resultado_ #Guarda o resultado
 
 def calcular(expressao: str)->str:#Calcula a expressão dada
     try:
@@ -113,7 +112,7 @@ frame_1.rowconfigure(0, weight = 1)
 frame_1.columnconfigure(0, weight = 1)
 
 #Frame 2
-frame_2.rowconfigure([0,1,2,3,4], weight = 1)
+frame_2.rowconfigure([0,1,2,3,4,5], weight = 1)
 frame_2.columnconfigure([0,1,2,3], weight = 1)
 
 
@@ -156,10 +155,10 @@ somar = tk.Button(frame_2, text= "+", width=7,height=3,bg = "Orange",
 
 
 
-divid.grid(row = 0, column = 3, sticky = "nswe")
-mult.grid(row = 1,column = 3, sticky = "nswe")
-subtrair.grid(row = 2, column = 3, sticky = "nswe")
-somar.grid(row = 3, column = 3, sticky = "nswe")
+divid.grid(row = 1, column = 3, sticky = "nswe")
+mult.grid(row = 2,column = 3, sticky = "nswe")
+subtrair.grid(row = 3, column = 3, sticky = "nswe")
+somar.grid(row = 4, column = 3, sticky = "nswe")
 
 
 #Botões - Apagar - - - - - - - - - - - - - - - - - - - - -
@@ -178,8 +177,31 @@ apagar_tudo.grid(row = 0, column = 0, columnspan = 2, sticky = "snswe")
 apagar.grid(row = 0, column = 2, sticky = "nswe")
 
 
+#Linha 0 -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -
+resto_divisao = tk.Button(frame_2, text = "%", width = 7, height = 2,
+                          relief="raised", overrelief="flat",
+                          state = "disabled")
 
-#Linha 1 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+resto_divisao.grid(row = 0, column = 3, sticky = "nswe")
+
+#Linha 1 -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -
+abre_paren = tk.Button(frame_2,text = "(", width = 7, height = 3, font = fonte_botoes,
+                       relief = "raised", overrelief= "flat",
+                  command = lambda: mostrar("("))
+fecha_paren = tk.Button(frame_2, text = ")", width = 7, height = 2,
+                        relief = "raised", overrelief = "flat",
+                  command = lambda: mostrar(")"))
+
+elevado_ao_quadrado = tk.Button(frame_2, text = "x²", width = 7, height = 2,
+                                relief = "raised", overrelief= "flat",
+                                state="disabled")
+
+abre_paren.grid(row = 1, column = 0, sticky = "nswe")
+fecha_paren.grid(row = 1, column = 1, sticky = "nswe")
+elevado_ao_quadrado.grid(row = 1, column = 2, sticky = "nswe")
+
+
+#Linha 2 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 sete = tk.Button(frame_2, text= "7",width=7,height=3,  font = fonte_botoes,
               relief= "raised", overrelief="flat",
               command= lambda: mostrar("7"))
@@ -192,12 +214,12 @@ nove = tk.Button(frame_2, text = "9",width=7,height=3, font = fonte_botoes,
               relief= "raised",overrelief="flat",
               command = lambda: mostrar("9"))
 
-sete.grid(row = 1, column = 0, sticky = "nswe")
-oito.grid(row = 1, column = 1, sticky = "nswe")
-nove.grid(row = 1, column = 2, sticky = "nswe")
+sete.grid(row = 2, column = 0, sticky = "nswe")
+oito.grid(row = 2, column = 1, sticky = "nswe")
+nove.grid(row = 2, column = 2, sticky = "nswe")
 
 
-#Linha2 -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -
+#Linha 3 -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -
 quatro = tk.Button(frame_2, text = "4",width=7,height=3, font = fonte_botoes,
                 relief= "raised", overrelief="flat",
                 command = lambda: mostrar("4"))
@@ -213,12 +235,12 @@ seis= tk.Button(frame_2, text = "6",width=7,height=3, font = fonte_botoes,
              command= lambda: mostrar("6"))
 
 
-quatro.grid(row = 2, column = 0, sticky = "nswe")
-cinco.grid(row = 2, column = 1, sticky = "nswe")
-seis.grid(row = 2,column = 2, sticky = "nswe")
+quatro.grid(row = 3, column = 0, sticky = "nswe")
+cinco.grid(row = 3, column = 1, sticky = "nswe")
+seis.grid(row = 3,column = 2, sticky = "nswe")
 
 
-#Linha3  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -
+#Linha 4  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -
 um = tk.Button(frame_2, text = "1", width=7,height=3, font = fonte_botoes,
             relief= "raised", overrelief="flat",
             command= lambda: mostrar("1"))
@@ -234,9 +256,9 @@ tres = tk.Button(frame_2, text="3", width=7,height=3, font = fonte_botoes,
               command= lambda: mostrar("3"))
 
 
-um.grid(row = 3, column = 0, sticky = "nswe")
-dois.grid(row = 3, column = 1, sticky = "nswe")
-tres.grid(row = 3, column = 2, sticky = "nswe")
+um.grid(row = 4, column = 0, sticky = "nswe")
+dois.grid(row = 4, column = 1, sticky = "nswe")
+tres.grid(row = 4, column = 2, sticky = "nswe")
 
 
 #Linha4  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -
@@ -259,10 +281,10 @@ igual = tk.Button(frame_2, text= "=", width=7,height=3,bg= "Orange", font = font
                command=lambda : resultado())
 
 
-zero.grid(row = 4, column = 0, sticky = "nswe")
-ponto.grid(row = 4, column = 1, sticky = "nswe")
-botao_ans.grid(row = 4, column = 2, sticky = "nswe")
-igual.grid(row = 4, column = 3, sticky = "nswe")
+zero.grid(row = 5, column = 0, sticky = "nswe")
+ponto.grid(row = 5, column = 1, sticky = "nswe")
+botao_ans.grid(row = 5, column = 2, sticky = "nswe")
+igual.grid(row = 5, column = 3, sticky = "nswe")
 
 
 #Eventos de teclado
