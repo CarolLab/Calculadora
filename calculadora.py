@@ -180,7 +180,7 @@ apagar.grid(row = 0, column = 2, sticky = "nswe")
 #Linha 0 -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -
 resto_divisao = tk.Button(frame_2, text = "%", width = 7, height = 2,
                           relief="raised", overrelief="flat",
-                          state = "disabled")
+                          command = lambda: mostrar("%"))
 
 resto_divisao.grid(row = 0, column = 3, sticky = "nswe")
 
@@ -194,7 +194,7 @@ fecha_paren = tk.Button(frame_2, text = ")", width = 7, height = 2,
 
 elevado_ao_quadrado = tk.Button(frame_2, text = "x²", width = 7, height = 2,
                                 relief = "raised", overrelief= "flat",
-                                state="disabled")
+                                command = lambda: mostrar("**"))
 
 abre_paren.grid(row = 1, column = 0, sticky = "nswe")
 fecha_paren.grid(row = 1, column = 1, sticky = "nswe")
