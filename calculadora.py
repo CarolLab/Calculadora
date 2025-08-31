@@ -3,7 +3,8 @@ import tkinter as tk
 
 #Funções
 def evento_teclado(evento):#Lida com os eventos de teclado
-    if evento.char in "+-/*1234567890.":
+    print(evento.char)
+    if evento.char in "+-/*1234567890.%)":
         mostrar(evento.char)#Executa a função de mostrar o caracter no monitor
     elif evento.char == "c" or evento.char == "C":
         monitor_stringvar.set("") #Limpa o monitor
@@ -11,6 +12,9 @@ def evento_teclado(evento):#Lida com os eventos de teclado
         resultado() #Executa a função que faz o cálculo
     elif evento.keysym == "BackSpace":
         apagar2()#Executa a função de apagar um por um
+    elif evento.char in "(x":
+        botoes_dici = {"(":"*(", "x": "**"}
+        mostrar(botoes_dici[evento.char])
 
 
 
