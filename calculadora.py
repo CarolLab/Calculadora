@@ -3,8 +3,7 @@ import tkinter as tk
 
 #Funções
 def evento_teclado(evento):#Lida com os eventos de teclado
-    print(evento.char)
-    if evento.char in "+-/*1234567890.%)":
+    if evento.char in "+-/*1234567890.%()":
         mostrar(evento.char)#Executa a função de mostrar o caracter no monitor
     elif evento.char == "c" or evento.char == "C":
         monitor_stringvar.set("") #Limpa o monitor
@@ -12,9 +11,8 @@ def evento_teclado(evento):#Lida com os eventos de teclado
         resultado() #Executa a função que faz o cálculo
     elif evento.keysym == "BackSpace":
         apagar2()#Executa a função de apagar um por um
-    elif evento.char in "(x":
-        botoes_dici = {"(":"*(", "x": "**"}
-        mostrar(botoes_dici[evento.char])
+    elif evento.char == "x":
+        mostrar("**")
 
 
 
@@ -191,7 +189,7 @@ resto_divisao.grid(row = 0, column = 3, sticky = "nswe")
 #Linha 1 -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -
 abre_paren = tk.Button(frame_2,text = "(", width = 7, height = 3, font = fonte_botoes,
                        relief = "raised", overrelief= "flat",
-                  command = lambda: mostrar("*("))
+                  command = lambda: mostrar("("))
 fecha_paren = tk.Button(frame_2, text = ")", width = 7, height = 2,
                         relief = "raised", overrelief = "flat",
                   command = lambda: mostrar(")"))
