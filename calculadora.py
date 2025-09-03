@@ -3,16 +3,23 @@ import tkinter as tk
 
 #Funções
 def evento_teclado(evento):#Lida com os eventos de teclado
-    if evento.char in "+-/*1234567890.%()":
-        mostrar(evento.char)#Executa a função de mostrar o caracter no monitor
-    elif evento.char == "c" or evento.char == "C":
-        monitor_stringvar.set("") #Limpa o monitor
-    elif evento.keysym == "Return":
-        resultado() #Executa a função que faz o cálculo
-    elif evento.keysym == "BackSpace":
-        apagar2()#Executa a função de apagar um por um
-    elif evento.char == "x":
-        mostrar("**")
+    if evento.char not in ("\x08", ""):
+        dici_eventos = {"+-/*1234567890.%()":lambda:mostrar(evento.char),
+                        "Cc":lambda:monitor_stringvar.set(""),
+                        "x": lambda:mostrar("**")
+        }
+
+        for key, funcao in dici_eventos.items():
+            if evento.char in key: #Se for um caracter válido
+                funcao() #Executa a função
+                break
+
+
+    else:
+        if evento.keysym == "Return":
+            resultado() #Executa a função que faz o cálculo
+        elif evento.keysym == "BackSpace":
+            apagar2()#Executa a função de apagar um por um
 
 
 
@@ -290,7 +297,7 @@ igual.grid(row = 5, column = 3, sticky = "nswe")
 
 
 #Eventos de teclado
-janela.bind("<Key>", evento_teclado)#Ao carregar num tecla
+janela.bind("<KeyPress>", evento_teclado)#Ao carregar num tecla
 
 #Loop
 janela.mainloop()
