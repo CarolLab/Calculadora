@@ -3,9 +3,10 @@ import tkinter as tk
 
 #Funções
 def evento_teclado(evento):#Lida com os eventos de teclado
-    if evento.char not in ("\x08", ""):
+    if evento.char.strip() not in ("\x08"):
         dici_eventos = {"+-/*1234567890.%()":lambda:mostrar(evento.char),
                         "Cc":lambda:monitor_stringvar.set(""),
+                        "a": lambda: mostrar(ultimo_resultado),
                         "x": lambda:mostrar("**")
         }
 
