@@ -2,13 +2,33 @@ import tkinter as tk
 
 
 #Funções
+def selecionar_parenteses(texto_monitor: str)-> str:
+    try:
+        ultimo_caracter = texto_monitor[-1]
+        #Pegar o último caracter
+    except IndexError:
+        #Se não existe nenhum caracter então dá erro
+        return "("
+
+
+    #Se exite caracter
+    if ultimo_caracter in "+-/*%":
+        return "("
+
+    # Se for número, simbolo ou não tiver operador antes
+    return "*("
+
+
+
 def evento_teclado(evento):#Lida com os eventos de teclado
-    if evento.char.strip() not in ("\x08"):
-        dici_eventos = {"+-/*1234567890.%()":lambda:mostrar(evento.char),
+    if evento.char.strip() not in "\x08":
+        dici_eventos = {"+-/*1234567890.%)":lambda:mostrar(evento.char),
+                        "(": lambda: mostrar(selecionar_parenteses(monitor_stringvar.get())),
                         "Cc":lambda:monitor_stringvar.set(""),
                         "a": lambda: mostrar(ultimo_resultado),
                         "x": lambda:mostrar("**")
         }
+
 
         for key, funcao in dici_eventos.items():
             if evento.char in key: #Se for um caracter válido
@@ -75,6 +95,7 @@ def resultado(): #Mostra o resultado no monitor
 
     mostrar_resultado = True#O resultado está a ser exibido
     ultimo_resultado = resultado_ #Guarda o resultado
+
 
 def calcular(expressao: str)->str:#Calcula a expressão dada
     try:
@@ -197,7 +218,7 @@ resto_divisao.grid(row = 0, column = 3, sticky = "nswe")
 #Linha 1 -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -
 abre_paren = tk.Button(frame_2,text = "(", width = 7, height = 3, font = fonte_botoes,
                        relief = "raised", overrelief= "flat",
-                  command = lambda: mostrar("("))
+                  command = lambda: mostrar(selecionar_parenteses(monitor_stringvar.get())))
 fecha_paren = tk.Button(frame_2, text = ")", width = 7, height = 2,
                         relief = "raised", overrelief = "flat",
                   command = lambda: mostrar(")"))
