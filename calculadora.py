@@ -115,7 +115,7 @@ ultimo_resultado = 0 #Variável que é usada pelo botão ANS
 
 janela = tk.Tk()
 
-janela.geometry("227x330")
+janela.geometry("227x335")
 janela.title("Calculadora")
 
 #Configuração da jenale e colunas e linhas da janela
@@ -134,7 +134,7 @@ fonte_operadores = "Antenna 9 bold"
 
 
 #Frames - - - - - -  - - -
-frame_1 = tk.Frame(janela)
+frame_1 = tk.Frame(janela,bg="#423f3f",)
 frame_2 = tk.Frame(janela)
 
 #Configuração e colunas e linhas dos frames
@@ -156,7 +156,7 @@ monitor_stringvar = tk.StringVar()
 
 monitor = tk.Label(frame_1, textvariable=monitor_stringvar, anchor= "e", relief = "flat",justify= "right",
                 width = 18, height= 2, padx = 7,
-                bg="#423f3f", fg="White",font = "Ivy 16")
+                bg="#423f3f",fg="White",font = "Ivy 16")
 monitor.grid(row = 0, column = 0, sticky = "nswe")
 
 
@@ -184,14 +184,21 @@ somar = tk.Button(frame_2, text= "+", width=7,height=3,bg = "Orange",
                relief= "raised", overrelief="ridge", font = fonte_operadores,
                command= lambda: mostrar("+"))
 
+#Resto da divisão
+resto_divisao = tk.Button(frame_2, text = "%", width = 7, height = 2,
+                          relief="raised", overrelief="flat",
+                          command = lambda: mostrar("%"))
+
 
 
 divid.grid(row = 1, column = 3, sticky = "nswe")
 mult.grid(row = 2,column = 3, sticky = "nswe")
 subtrair.grid(row = 3, column = 3, sticky = "nswe")
 somar.grid(row = 4, column = 3, sticky = "nswe")
+resto_divisao.grid(row = 0, column = 3, sticky = "nswe")
 
 
+#Linha 0 -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -
 #Botões - Apagar - - - - - - - - - - - - - - - - - - - - -
 apagar_tudo= tk.Button(frame_2, text="C",font = fonte_botoes,
                     width=7,height = 3,
@@ -207,13 +214,6 @@ apagar = tk.Button(frame_2, width = 7, height = 3,
 apagar_tudo.grid(row = 0, column = 0, columnspan = 2, sticky = "snswe")
 apagar.grid(row = 0, column = 2, sticky = "nswe")
 
-
-#Linha 0 -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -
-resto_divisao = tk.Button(frame_2, text = "%", width = 7, height = 2,
-                          relief="raised", overrelief="flat",
-                          command = lambda: mostrar("%"))
-
-resto_divisao.grid(row = 0, column = 3, sticky = "nswe")
 
 #Linha 1 -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -
 abre_paren = tk.Button(frame_2,text = "(", width = 7, height = 3, font = fonte_botoes,
@@ -303,7 +303,7 @@ ponto = tk.Button(frame_2, text = ".", width=7,height=3, font = fonte_botoes,
                command= lambda: mostrar("."))
 
 botao_ans = tk.Button(frame_2, text = "ANS", width = 7, height = 3,
-                      relief = "raised", overrelief = "flat",
+                      relief = "raised", overrelief = "flat", bg = "#DCDCDC",
                       command = lambda: mostrar(ultimo_resultado))
 
 
