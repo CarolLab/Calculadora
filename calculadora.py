@@ -11,7 +11,7 @@ def selecionar_parenteses(texto_monitor: str)-> str:
         return "("
 
 
-    #Se exite caracter
+    #Se existir caracter
     if ultimo_caracter in "+-/*%":
         return "("
 
@@ -22,7 +22,9 @@ def selecionar_parenteses(texto_monitor: str)-> str:
 
 def evento_teclado(evento):#Lida com os eventos de teclado
     if evento.char.strip() not in "\x08":
-        dici_eventos = {"+-/*1234567890.%)":lambda:mostrar(evento.char),
+        #                   teclas              Funções
+        dici_eventos = {"1234567890.)":lambda:mostrar(evento.char),
+                        "+-*/%":lambda:mostrar_operadores(evento.char),
                         "(": lambda: mostrar(selecionar_parenteses(monitor_stringvar.get())),
                         "Cc":lambda:monitor_stringvar.set(""),
                         "a": lambda: mostrar(ultimo_resultado),
@@ -44,6 +46,25 @@ def evento_teclado(evento):#Lida com os eventos de teclado
 
 
 
+def mostrar_operadores(operador: str): #Recebe os operadores
+    texto_monitor = monitor_stringvar.get()
+
+    if texto_monitor:#Se tiver algo
+
+        if texto_monitor[-1] in "+-*/%":
+            novo_texto = texto_monitor.replace(texto_monitor[-1], operador) #Troca do operador antigo para o novo
+            monitor_stringvar.set(novo_texto)
+
+        else:
+            monitor_stringvar.set(texto_monitor + operador) #Adiciona só o operador ao monitor
+
+    #Se não tiver nada atrás exibe 0 e o operador
+    else:
+        monitor_stringvar.set("0" + operador)
+
+
+
+
 def mostrar(caracter):#Mostar a caracter no monitor
     global mostrar_resultado
 
@@ -52,9 +73,9 @@ def mostrar(caracter):#Mostar a caracter no monitor
         #O monitor fica só com o caracter
 
         if caracter in "0123456789":
-            monitor_stringvar.set(caracter)
+            monitor_stringvar.set(caracter)#O texto passa a ser só o número
             mostrar_resultado = False# O resultado já não está a ser exibido
-        else:#"+-*/."
+        else:#".)xa"
             novo_texto = monitor_stringvar.get() + caracter
 
             monitor_stringvar.set(novo_texto)
@@ -64,7 +85,7 @@ def mostrar(caracter):#Mostar a caracter no monitor
     else:#Se o resultado não estiver a ser exibido
         #Age normalmente
         #Adiciona á expressão o novo caracter
-        novo_texto = monitor_stringvar.get() + str(caracter)#Adiciona o caracter pretendido
+        novo_texto = monitor_stringvar.get() + caracter#Adiciona o caracter pretendido
 
         monitor_stringvar.set(novo_texto)#Insere o texto do monitar mais o caracter
 
@@ -95,6 +116,7 @@ def resultado(): #Mostra o resultado no monitor
 
     mostrar_resultado = True#O resultado está a ser exibido
     ultimo_resultado = resultado_ #Guarda o resultado
+
 
 
 def calcular(expressao: str)->str:#Calcula a expressão dada
@@ -165,29 +187,29 @@ monitor.grid(row = 0, column = 0, sticky = "nswe")
 #Divisão
 divid = tk.Button(frame_2, text="/", width=7, height = 3, bg = "Orange",
                relief="raised", overrelief="ridge", font = fonte_operadores,
-               command= lambda: mostrar("/"))
+               command= lambda: mostrar_operadores("/"))
 
 
 #Multiplicação
 mult = tk.Button(frame_2, text = "*", width=7, height=3, bg = "Orange",
               relief="raised", overrelief="ridge",font = fonte_operadores,
-              command = lambda: mostrar("*"))
+              command = lambda: mostrar_operadores("*"))
 
 
 #Subtração
 subtrair = tk.Button(frame_2, text = "-", width=7,height=3, bg = "Orange",
                   relief="raised", overrelief="ridge", font = fonte_operadores,
-                  command=lambda: mostrar("-"))
+                  command=lambda: mostrar_operadores("-"))
 
 #Adição
 somar = tk.Button(frame_2, text= "+", width=7,height=3,bg = "Orange",
                relief= "raised", overrelief="ridge", font = fonte_operadores,
-               command= lambda: mostrar("+"))
+               command= lambda: mostrar_operadores("+"))
 
 #Resto da divisão
 resto_divisao = tk.Button(frame_2, text = "%", width = 7, height = 2,
                           relief="raised", overrelief="flat",
-                          command = lambda: mostrar("%"))
+                          command = lambda: mostrar_operadores("%"))
 
 
 
