@@ -22,13 +22,13 @@ def selecionar_parenteses(texto_monitor: str)-> str:
 
 def evento_teclado(evento):#Lida com os eventos de teclado
     if evento.char.strip() not in "\x08":
-        #                   teclas              Funções
+        #                   Teclas              Funções
         dici_eventos = {"1234567890.)":lambda:mostrar(evento.char),
                         "+-*/%":lambda:mostrar_operadores(evento.char),
                         "(": lambda: mostrar(selecionar_parenteses(monitor_stringvar.get())),
                         "Cc":lambda:monitor_stringvar.set(""),
                         "a": lambda: mostrar(ultimo_resultado),
-                        "x": lambda:mostrar("**")
+                        "x": lambda:mostrar("**2")
         }
 
 
@@ -247,7 +247,7 @@ fecha_paren = tk.Button(frame_2, text = ")", width = 7, height = 2,
 
 elevado_ao_quadrado = tk.Button(frame_2, text = "x²", width = 7, height = 2,
                                 relief = "raised", overrelief= "flat",
-                                command = lambda: mostrar("**"))
+                                command = lambda: mostrar("**2"))
 
 abre_paren.grid(row = 1, column = 0, sticky = "nswe")
 fecha_paren.grid(row = 1, column = 1, sticky = "nswe")
