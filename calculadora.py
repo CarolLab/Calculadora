@@ -12,7 +12,7 @@ def selecionar_parenteses(texto_monitor: str)-> str:
 
 
     #Se existir caracter
-    if ultimo_caracter in "+-/*%":
+    if ultimo_caracter in "+-/*%(":
         return "("
 
     # Se for número, simbolo ou não tiver operador antes
@@ -122,7 +122,7 @@ def resultado(): #Mostra o resultado no monitor
 def calcular(expressao: str)->str:#Calcula a expressão dada
     try:
         return str(eval(expressao)) #Calcula e retorna o resultado em float
-    except (SyntaxError, TypeError):
+    except (SyntaxError, TypeError, ZeroDivisionError):
         return ""
 
 
